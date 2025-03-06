@@ -1,4 +1,3 @@
 class AppImages {
-  static const backIcon = 'assets/svgs/backIcon.svg';
-
+  static const mainImage = 'assets/image/mainIcon.png';
 }

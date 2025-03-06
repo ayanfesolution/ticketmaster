@@ -1,11 +1,15 @@
 import 'dart:async';
-
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:ticketmaster/utils/app_images.dart' show AppImages;
+import 'package:ticketmaster/provider/system_setup/theme_data_provider.dart';
+import 'package:ticketmaster/provider/ticket/ticket_provider.dart';
+import 'package:ticketmaster/screens/home_page.dart';
+import 'package:ticketmaster/utils/app_images.dart';
+import 'package:ticketmaster/utils/constants.dart';
 import 'package:ticketmaster/utils/extension/auto_resize.dart';
 import 'package:ticketmaster/utils/injector.dart';
 import 'package:ticketmaster/utils/local_keys.dart';
@@ -21,11 +25,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
     initialAction();
+    ref.read(ticketProvider.notifier).getTheEventBasedOnPageNumber();
     super.initState();
   }
 
   Future<Timer> initialAction() async {
-    // ref.read(apiKey.notifier).getApiKey();
     return Timer(const Duration(seconds: 3), () async {
       bool isItAFirstTimeLaunch = await injector.quickStorage.returnBool(
         key: ObjectKeys.firstTimeLaunch,
@@ -40,7 +44,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
       if (mounted) {
         if (isItAFirstTimeLaunch == false) {
-          context.go(OnboardingScreen.fullPath);
+          context.go(HomePage.fullPath);
         } else {
           if (kDebugMode) {
             print('its here');
@@ -68,13 +72,13 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                 SizedBox(
                   height: 150.hh(context),
                   width: 150.ww(context),
-                  child: Image.asset(AppImages.mainLogoIcon),
+                  child: Image.asset(AppImages.mainImage),
                 ),
                 Text(
                   'Ticket Master',
-                  style: GoogleFonts.playfair(
+                  style: TextStyle(
                     color:
-                        (themeMode == ThemeMode.dark)
+                        (isDarkMode(context))
                             ? injector.palette.pureWhite
                             : injector.palette.textColor,
                     fontSize: 40,

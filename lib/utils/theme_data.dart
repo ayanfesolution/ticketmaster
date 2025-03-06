@@ -5,7 +5,8 @@ import 'package:ticketmaster/utils/injector.dart';
 class TicketMasterTheme {
   static final lightMode = ThemeData(
     scaffoldBackgroundColor: injector.palette.pureWhite,
-    fontFamily: GoogleFonts.urbanist().fontFamily,
+    fontFamily: GoogleFonts.poppins().fontFamily,
+    textTheme: GoogleFonts.poppinsTextTheme(),
     primaryColor: injector.palette.primaryColor,
     dividerColor: injector.palette.dividerColor,
     colorScheme: ColorScheme.fromSwatch(
@@ -28,7 +29,8 @@ class TicketMasterTheme {
     appBarTheme: AppBarTheme(
       backgroundColor: injector.palette.darkModeBackground,
     ),
-    fontFamily: GoogleFonts.urbanist().fontFamily,
+    fontFamily: GoogleFonts.poppins().fontFamily,
+    textTheme: GoogleFonts.poppinsTextTheme(),
     primaryColor: injector.palette.primaryColor,
     dividerColor: injector.palette.dividerColor,
     colorScheme: ColorScheme.fromSwatch(

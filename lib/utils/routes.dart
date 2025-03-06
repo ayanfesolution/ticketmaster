@@ -1,4 +1,6 @@
 import 'package:go_router/go_router.dart';
+import 'package:ticketmaster/screens/home_page.dart';
+import 'package:ticketmaster/screens/splash_screen.dart';
 import 'package:ticketmaster/utils/injector.dart';
 import 'package:ticketmaster/utils/transition.dart';
 
@@ -26,6 +28,14 @@ final router = GoRouter(
           (context, state) => buildMyTransition<void>(
             color: injector.palette.inactiveTextColor,
             child: const SplashScreen(),
+          ),
+    ),
+    GoRoute(
+      path: '/homepage', // Handle '/app' directly without redirection
+      pageBuilder:
+          (context, state) => buildMyTransition<void>(
+            color: injector.palette.inactiveTextColor,
+            child: const HomePage(),
           ),
     ),
   ],
