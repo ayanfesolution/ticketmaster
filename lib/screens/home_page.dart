@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticketmaster/model/ticket_model.dart';
 import 'package:ticketmaster/model/ticket_response.dart';
 import 'package:ticketmaster/provider/ticket/ticket_provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ticketmaster/utils/constants.dart';
 import 'package:ticketmaster/utils/extension/auto_resize.dart';
+import 'package:ticketmaster/utils/loader.dart';
 
 class HomePage extends StatefulHookConsumerWidget {
   const HomePage({super.key});
@@ -18,11 +21,13 @@ class HomePage extends StatefulHookConsumerWidget {
 
 class _HomePageState extends ConsumerState<HomePage> {
   late ScrollController _scrollController;
+  bool isPageLoading = false;
 
   @override
   void initState() {
     super.initState();
     _scrollController = ScrollController();
+
     _scrollController.addListener(_onScroll);
   }
 
@@ -34,14 +39,32 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 
   void _onScroll() {
-    if (_scrollController.position.pixels >=
-        _scrollController.position.maxScrollExtent - 100) {
+    if (_scrollController.position.extentAfter <= 0 && !isPageLoading) {
+      setState(() {
+        isPageLoading = true;
+      });
       _loadMoreTickets();
     }
   }
 
-  void _loadMoreTickets() {
-    print('doning anothre call');
+  void _loadMoreTickets() async {
+    CXLoader.show(context);
+    if ((ref.read(ticketProvider).totalPages ?? 0) >
+        (ref.read(ticketProvider).pageNumber ?? 0)) {
+      await ref
+          .read(ticketProvider.notifier)
+          .getTheEventBasedOnPageNumber(
+            pageNumber: ((ref.read(ticketProvider).pageNumber ?? 0) + 1),
+          );
+      setState(() {
+        isPageLoading = false;
+      });
+      CXLoader.hide();
+    } else {
+      kToastMsgPopUp(msg: 'You have reach the end of the list');
+      CXLoader.hide();
+    }
+
     // Call the network request to fetch more tickets
     //ref.read(ticketProvider.notifier).loadMore();
   }
@@ -55,15 +78,33 @@ class _HomePageState extends ConsumerState<HomePage> {
           'Ticket Master',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
         ),
+        actions: [
+          Row(
+            children: [
+              InkWell(
+                onTap: () {
+                  context.push('/eventSearch');
+                },
+                child: Icon(Icons.search_rounded),
+              ),
+              Gap(20.ww(context)),
+            ],
+          ),
+        ],
       ),
       body: ListView.builder(
         controller: _scrollController, // Attach the ScrollController
+
         itemCount: (ticketModel.events ?? []).length,
         itemBuilder: (context, index) {
           Event event = (ticketModel.events ?? [])[index];
 
           return ListTile(
+            onTap: () {
+              context.push('/ticketDetails', extra: event);
+            },
             leading: ProfilePicture(imageUrl: event.images?.first.url ?? ''),
+
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

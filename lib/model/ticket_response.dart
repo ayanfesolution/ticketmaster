@@ -65,7 +65,7 @@ class Event {
   final bool? test;
   final String? url;
   final String? locale;
-  final List<Image>? images;
+  final List<ImageFile>? images;
   final Sales? sales;
   final Dates? dates;
   final List<Classification>? classifications;
@@ -119,7 +119,9 @@ class Event {
     images:
         json["images"] == null
             ? []
-            : List<Image>.from(json["images"]!.map((x) => Image.fromJson(x))),
+            : List<ImageFile>.from(
+              json["images"]!.map((x) => ImageFile.fromJson(x)),
+            ),
     sales: json["sales"] == null ? null : Sales.fromJson(json["sales"]),
     dates: json["dates"] == null ? null : Dates.fromJson(json["dates"]),
     classifications:
@@ -416,7 +418,7 @@ class Attraction {
   final String? locale;
   final ExternalLinks? externalLinks;
   final List<String>? aliases;
-  final List<Image>? images;
+  final List<ImageFile>? images;
   final List<Classification>? classifications;
   final UpcomingEvents? upcomingEvents;
   final AttractionLinks? links;
@@ -454,7 +456,9 @@ class Attraction {
     images:
         json["images"] == null
             ? []
-            : List<Image>.from(json["images"]!.map((x) => Image.fromJson(x))),
+            : List<ImageFile>.from(
+              json["images"]!.map((x) => ImageFile.fromJson(x)),
+            ),
     classifications:
         json["classifications"] == null
             ? []
@@ -575,16 +579,16 @@ class Facebook {
   Map<String, dynamic> toJson() => {"url": url};
 }
 
-class Image {
+class ImageFile {
   final Ratio? ratio;
   final String? url;
   final num? width;
   final num? height;
   final bool? fallback;
 
-  Image({this.ratio, this.url, this.width, this.height, this.fallback});
+  ImageFile({this.ratio, this.url, this.width, this.height, this.fallback});
 
-  factory Image.fromJson(Map<String, dynamic> json) => Image(
+  factory ImageFile.fromJson(Map<String, dynamic> json) => ImageFile(
     ratio: ratioValues.map[json["ratio"]]!,
     url: json["url"],
     width: json["width"],
@@ -672,7 +676,7 @@ class Venue {
   final bool? test;
   final String? url;
   final String? locale;
-  final List<Image>? images;
+  final List<ImageFile>? images;
   final String? postalCode;
   final String? timezone;
   final City? city;
@@ -724,7 +728,9 @@ class Venue {
     images:
         json["images"] == null
             ? []
-            : List<Image>.from(json["images"]!.map((x) => Image.fromJson(x))),
+            : List<ImageFile>.from(
+              json["images"]!.map((x) => ImageFile.fromJson(x)),
+            ),
     postalCode: json["postalCode"],
     timezone: json["timezone"],
     city: json["city"] == null ? null : City.fromJson(json["city"]),

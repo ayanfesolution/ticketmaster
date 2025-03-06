@@ -18,4 +18,20 @@ class TicketModel {
       totalPages: totalPages ?? this.totalPages,
     );
   }
+
+  factory TicketModel.fromJson(Map<String, dynamic> json) {
+    return TicketModel(
+      events: (json['events'] as List?)?.map((e) => Event.fromJson(e)).toList(),
+      pageNumber: json['pageNumber'],
+      totalPages: json['totalPages'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'events': events?.map((e) => e.toJson()).toList(),
+      'pageNumber': pageNumber,
+      'totalPages': totalPages,
+    };
+  }
 }

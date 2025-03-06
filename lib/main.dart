@@ -5,12 +5,14 @@ import 'package:ticketmaster/provider/system_setup/theme_data_provider.dart';
 import 'package:ticketmaster/utils/injector.dart';
 import 'package:ticketmaster/utils/routes.dart';
 import 'package:ticketmaster/utils/theme_data.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Hive.initFlutter();
+  await Hive.openBox('eventCache'); // Open Hive box for caching
   await initializeDependencies();
   await getIt.allReady();
   await dotenv.load();
