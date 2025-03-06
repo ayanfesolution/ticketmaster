@@ -4,7 +4,7 @@
 A brief introduction to your project. Explain its purpose, features, and any unique aspects.
 
 ## 📂 Project Structure
-- **Architecture:** Architecture: MVC (Model-View-Controller).
+- **Architecture:** Architecture: MVVM (Model-View-ViewModel).
 - **State Management:** Riverpod.
 - **Networking:** Dio for API handling.
 - **Local Storage:** Hive for data persistence.
