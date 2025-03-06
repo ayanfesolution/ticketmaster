@@ -18,6 +18,7 @@ Ensure you have the following installed:
 - [Flutter](https://docs.flutter.dev/get-started/install)
 - Dart SDK (included with Flutter)
 - Emulator or real device
+- Add .env file with API keys
 
 ### 🔹 Installation Steps
 ```sh
@@ -30,8 +31,10 @@ flutter pub get
 
 # Run the app (choose platform)
 flutter run       # Mobile
-flutter run -d web   # Web
 ```
+
+### ⚠️ Important Note
+Before running the app, ensure you have add .env file with API keys. Like this API_KEY={YOUR-API-KEY}. To get api keys, you can create a new account on [TaskMasterAPI](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/)
 
 ## 🏗 Architectural Overview
 This project follows the **MVVM (Model-View-ViewModel) architecture** using **Riverpod for state management**.

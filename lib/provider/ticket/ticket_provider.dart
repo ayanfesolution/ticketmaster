@@ -25,6 +25,7 @@ class TicketProvider extends StateNotifier<TicketModel> {
   getTheEventBasedOnPageNumber({int? pageNumber}) async {
     int pageToLoad = pageNumber ?? 1;
     final connectivityResult = await Connectivity().checkConnectivity();
+    print(connectivityResult);
     bool isOffline = connectivityResult.contains(ConnectivityResult.none);
 
     if (isOffline) {
