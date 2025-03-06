@@ -1,4 +1,4 @@
-# 🚀 Project Name
+# 🚀 TaskMaster Test Project by Package.ai
 
 ## 📖 Overview
 A brief introduction to your project. Explain its purpose, features, and any unique aspects.
@@ -52,7 +52,7 @@ This project follows the **MVVM (Model-View-ViewModel) architecture** using **Ri
 No License available
 
 ## 🤝 Contributing
-Provide contribution guidelines if you accept external contributions.
+Create a new branch, make changes, and submit a pull request.
 
 ---
 
