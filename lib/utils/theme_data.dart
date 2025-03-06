@@ -6,7 +6,7 @@ class TicketMasterTheme {
   static final lightMode = ThemeData(
     scaffoldBackgroundColor: injector.palette.pureWhite,
     fontFamily: GoogleFonts.poppins().fontFamily,
-    textTheme: GoogleFonts.poppinsTextTheme(),
+    //   textTheme: GoogleFonts.poppinsTextTheme(),
     primaryColor: injector.palette.primaryColor,
     dividerColor: injector.palette.dividerColor,
     colorScheme: ColorScheme.fromSwatch(
@@ -30,7 +30,7 @@ class TicketMasterTheme {
       backgroundColor: injector.palette.darkModeBackground,
     ),
     fontFamily: GoogleFonts.poppins().fontFamily,
-    textTheme: GoogleFonts.poppinsTextTheme(),
+    //   textTheme: GoogleFonts.poppinsTextTheme(),
     primaryColor: injector.palette.primaryColor,
     dividerColor: injector.palette.dividerColor,
     colorScheme: ColorScheme.fromSwatch(
