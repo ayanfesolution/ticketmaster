@@ -498,6 +498,17 @@ class _TicketDetailsPageState extends ConsumerState<TicketDetailsPage> {
                     ),
                   ),
                   Gap(25.hh(context)),
+                  Text(
+                    'SiteMap',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w800,
+                      color:
+                          (isDarkMode(context))
+                              ? injector.palette.pureWhite
+                              : injector.palette.textColor,
+                    ),
+                  ),
                   CachedNetworkImage(
                     imageUrl: widget.event.seatmap?.staticUrl ?? '',
                     fit: BoxFit.fill,
@@ -510,6 +521,17 @@ class _TicketDetailsPageState extends ConsumerState<TicketDetailsPage> {
                             const Icon(Icons.error, color: Colors.red),
                   ),
                   Gap(15),
+                  Text(
+                    'Direction Map',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w800,
+                      color:
+                          (isDarkMode(context))
+                              ? injector.palette.pureWhite
+                              : injector.palette.textColor,
+                    ),
+                  ),
                   SizedBox(
                     height: 300.hh(context),
                     width: double.maxFinite,
@@ -547,8 +569,238 @@ class _TicketDetailsPageState extends ConsumerState<TicketDetailsPage> {
               },
               height: 50,
             ),
+            Gap(16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Accessible Seating Detail',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  widget
+                          .event
+                          .embedded
+                          ?.venues
+                          ?.first
+                          .accessibleSeatingDetail ??
+                      '',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
 
-            Gap(50),
+            Gap(16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Parking Details',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  widget.event.embedded?.venues?.first.parkingDetail ?? '',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+            Gap(16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'General Infomation',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  '${widget.event.embedded?.venues?.first.generalInfo?.generalRule ?? ''} \n\n${widget.event.embedded?.venues?.first.generalInfo?.childRule ?? ''}',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+            Gap(16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Phone Number Detail',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  widget
+                          .event
+                          .embedded
+                          ?.venues
+                          ?.first
+                          .boxOfficeInfo
+                          ?.phoneNumberDetail ??
+                      '',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+            Gap(16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Open Hours Detail',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  widget
+                          .event
+                          .embedded
+                          ?.venues
+                          ?.first
+                          .boxOfficeInfo
+                          ?.openHoursDetail ??
+                      '',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+            Gap(16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Accepted Payment Detail',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  widget
+                          .event
+                          .embedded
+                          ?.venues
+                          ?.first
+                          .boxOfficeInfo
+                          ?.acceptedPaymentDetail ??
+                      '',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+            Gap(16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Will Call Detail',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  widget
+                          .event
+                          .embedded
+                          ?.venues
+                          ?.first
+                          .boxOfficeInfo
+                          ?.willCallDetail ??
+                      '',
+                  style: TextStyle(
+                    color:
+                        (isDarkMode(context))
+                            ? injector.palette.pureWhite
+                            : injector.palette.textColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+            Gap(80),
           ],
         ),
       ),
