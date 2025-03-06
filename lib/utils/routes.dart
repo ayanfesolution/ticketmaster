@@ -13,7 +13,6 @@ final router = GoRouter(
       '/app', // Set initial route directly instead of using redirect
   redirect: (context, state) {
     final currentPath = state.fullPath;
-    print(currentPath);
 
     if (currentPath == '') {
       // If not authenticated and not already on the login page, redirect to login

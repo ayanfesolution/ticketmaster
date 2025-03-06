@@ -10,21 +10,16 @@ class TicketDataSource {
 
   Future<EventModel> getAllTheEventList(int pageNumber) async {
     try {
-      print('got here');
       String? apiKey = dotenv.env['API_KEY'];
-      print('got here too');
       final result = await client.get(
         '/events.json',
         params: {'apikey': apiKey, 'page': pageNumber, 'size': 20},
       );
-      print('got here too again');
-      print(result.data);
 
       final output = EventModel.fromJson(result.data);
 
       return output;
     } catch (e) {
-      print('move to catch block');
       kToastMsgPopUp(msg: NetworkExceptions.getDioException(e));
       return EventModel();
     }

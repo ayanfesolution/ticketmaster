@@ -123,7 +123,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                           Text(
                             'Venue',
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 11,
                               fontWeight: FontWeight.w800,
                             ),
                           ),
@@ -146,7 +146,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                           Text(
                             'Date and Time',
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 11,
                               fontWeight: FontWeight.w800,
                             ),
                           ),

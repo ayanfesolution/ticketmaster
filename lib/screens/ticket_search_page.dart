@@ -110,7 +110,7 @@ class _TicketSearchPageState extends ConsumerState<TicketSearchPage> {
                                   Text(
                                     'Venue',
                                     style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.w800,
                                     ),
                                   ),
@@ -133,7 +133,7 @@ class _TicketSearchPageState extends ConsumerState<TicketSearchPage> {
                                   Text(
                                     'Date and Time',
                                     style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.w800,
                                     ),
                                   ),

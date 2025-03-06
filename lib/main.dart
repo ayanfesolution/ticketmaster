@@ -26,7 +26,6 @@ class TicketMasterApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ThemeMode themeMode = ref.watch(getTheThemeData);
-    print(themeMode.name);
     return MaterialApp.router(
       title: 'TicketMaster App',
       theme: TicketMasterTheme.lightMode,
