@@ -151,7 +151,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                             ),
                           ),
                           Text(
-                            '${(event.dates?.start?.localDate ?? DateTime.now()).day}:${(event.dates?.start?.localDate ?? DateTime.now()).month}:${(event.dates?.start?.localDate ?? DateTime.now()).year} : (${(event.dates?.start?.dateTime ?? DateTime.now()).hour} : ${(event.dates?.start?.dateTime ?? DateTime.now()).minute})',
+                            formatDateTime(
+                              event.dates?.start?.dateTime ?? DateTime.now(),
+                            ),
                             style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w600,
